@@ -3,6 +3,7 @@
 author SparkByExamples.com
 """
 
+from pyspark.sql.types import StructType,StructField, StringType, IntegerType
 import pandas as pd    
 data = [['Scott', 50], ['Jeff', 45], ['Thomas', 54],['Ann',34]] 
   
@@ -24,7 +25,6 @@ sparkDF.printSchema()
 sparkDF.show()
 
 #sparkDF=spark.createDataFrame(pandasDF.astype(str)) 
-from pyspark.sql.types import StructType,StructField, StringType, IntegerType
 mySchema = StructType([ StructField("First Name", StringType(), True)\
                        ,StructField("Age", IntegerType(), True)])
 
@@ -32,13 +32,11 @@ sparkDF2 = spark.createDataFrame(pandasDF,schema=mySchema)
 sparkDF2.printSchema()
 sparkDF2.show()
 
-
 spark.conf.set("spark.sql.execution.arrow.enabled","true")
 spark.conf.set("spark.sql.execution.arrow.pyspark.fallback.enabled","true")
 
 pandasDF2=sparkDF2.select("*").toPandas
 print(pandasDF2)
-
 
 test=spark.conf.get("spark.sql.execution.arrow.enabled")
 print(test)
