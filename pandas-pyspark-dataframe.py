@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-author SparkByExamples.com
-"""
-
 from pyspark.sql.types import StructType,StructField, StringType, IntegerType
 import pandas as pd    
 data = [['Scott', 50], ['Jeff', 45], ['Thomas', 54],['Ann',34]] 
