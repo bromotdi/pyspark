@@ -13,8 +13,7 @@ from pyspark.sql.types import StructType, StructField, StringType, IntegerType, 
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
-schema = StructType([
-            StructField("seq", StringType(), True)])
+schema = StructType([StructField("seq", StringType(), True)])
 
 dates = ['1']
 
