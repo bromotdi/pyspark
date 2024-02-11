@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-author SparkByExamples.com
-"""
-
 from pyspark.sql import SparkSession
 
 spark = SparkSession.builder \
@@ -17,7 +12,6 @@ data = [('James','Smith','M',3000),
 columns = ["firstname","lastname","gender","salary"]
 df = spark.createDataFrame(data=data, schema = columns)
 df.show()
-
 
 if 'salary1' not in df.columns:
     print("aa")
@@ -41,7 +35,6 @@ from pyspark.sql.functions import current_date
 df.withColumn("current_date", current_date()) \
   .show()
 
-
 from pyspark.sql.functions import when
 df.withColumn("grade", \
    when((df.salary < 4000), lit("A")) \
@@ -62,8 +55,3 @@ spark.sql("select firstname,salary, current_date() as today_date from PER").show
 spark.sql("select firstname,salary, " +
           "case salary when salary < 4000 then 'A' "+
           "else 'B' END as grade from PER").show()
-
-
-
-
-
