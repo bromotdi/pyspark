@@ -24,7 +24,6 @@ res = list(OrderedDict.fromkeys(states1))
 print(res)
 #['CA', 'NY', 'FL']
 
-
 #Example 2
 states2=df.rdd.map(lambda x: x.state).collect()
 print(states2)
