@@ -1,14 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-author SparkByExamples.com
-"""
-
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StringType, ArrayType,StructType,StructField
+from pyspark.sql.types import StringType, ArrayType, StructType, StructField
 spark = SparkSession.builder \
                     .appName('SparkByExamples.com') \
                     .getOrCreate()
-
 
 arrayCol = ArrayType(StringType(),False)
 
