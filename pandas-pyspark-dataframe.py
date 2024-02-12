@@ -1,4 +1,6 @@
-from pyspark.sql.types import StructType,StructField, StringType, IntegerType
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType
+from pyspark.sql import SparkSession
+
 import pandas as pd    
 data = [['Scott', 50], ['Jeff', 45], ['Thomas', 54],['Ann',34]] 
   
@@ -7,8 +9,6 @@ pandasDF = pd.DataFrame(data, columns = ['Name', 'Age'])
   
 # print dataframe. 
 print(pandasDF)
-
-from pyspark.sql import SparkSession
 
 spark = SparkSession.builder \
     .master("local[1]") \
