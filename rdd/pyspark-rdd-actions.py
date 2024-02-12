@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jun 14 10:20:19 2020
-"""
-
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 data=[("Z", 1),("A", 20),("B", 30),("C", 40),("B", 30),("B", 60)]
@@ -55,7 +50,6 @@ print("countApproxDistinct : "+str(inputRDD.countApproxDistinct()))
 
 #countByValue, countByValueApprox
 print("countByValue :  "+str(listRdd.countByValue()))
-
 
 #first
 print("first :  "+str(listRdd.first()))
