@@ -1,5 +1,6 @@
 import pyspark
 from pyspark.sql import SparkSession
+from pyspark.sql.types import StructType, StructField, StringType
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
@@ -8,6 +9,7 @@ dept = [("Finance",10),
         ("Sales",30), 
         ("IT",40) 
       ]
+
 rdd = spark.sparkContext.parallelize(dept)
 
 df = rdd.toDF()
@@ -23,8 +25,6 @@ deptDF = spark.createDataFrame(data=dept, schema = deptColumns)
 deptDF.printSchema()
 deptDF.show(truncate=False)
 
-
-from pyspark.sql.types import StructType,StructField, StringType
 deptSchema = StructType([       
     StructField('dept_name', StringType(), True),
     StructField('dept_id', StringType(), True)
@@ -33,6 +33,3 @@ deptSchema = StructType([
 deptDF1 = spark.createDataFrame(data=dept, schema = deptSchema)
 deptDF1.printSchema()
 deptDF1.show(truncate=False)
-
-
-
