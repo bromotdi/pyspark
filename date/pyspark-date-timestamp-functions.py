@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-"""
-author SparkByExamples.com
-"""
-
 from pyspark.sql import SparkSession
+
 # Create SparkSession
 spark = SparkSession.builder \
                .appName('SparkByExamples.com') \
@@ -46,7 +42,6 @@ df.select(col("input"),
    ).show()
 
 #add_months() , date_add(), date_sub()
-
 df.select(col("input"), 
     add_months(col("input"),3).alias("add_months"), 
     add_months(col("input"),-3).alias("sub_months"), 
