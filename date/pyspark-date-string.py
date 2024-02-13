@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-author SparkByExamples.com
-"""
-
 from pyspark.sql import SparkSession
 
 # Create SparkSession
@@ -21,7 +16,6 @@ df.select(current_date().alias("current_date"), \
    ).show()
 
 #SQL
-
 spark.sql("select current_date() as current_date, "+
       "date_format(current_timestamp(),'yyyy MM dd') as yyyy_MM_dd, "+
       "date_format(current_timestamp(),'MM/dd/yyyy hh:mm') as MM_dd_yyyy, "+
