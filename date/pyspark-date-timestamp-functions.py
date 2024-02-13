@@ -49,8 +49,6 @@ df.select(col("input"),
     date_sub(col("input"),4).alias("date_sub") 
   ).show()
 
-#
-
 df.select(col("input"), 
      year(col("input")).alias("year"), 
      month(col("input")).alias("month"), 
@@ -77,11 +75,9 @@ df2.select(col("input"),
     to_timestamp(col("input"), "MM-dd-yyyy HH mm ss SSS").alias("to_timestamp") 
   ).show(truncate=False)
 
-
 #hour, minute,second
-data=[["1","2020-02-01 11:01:19.06"],["2","2019-03-01 12:01:19.406"],["3","2021-03-01 12:01:19.406"]]
+data=[["1","2023-02-01 11:01:19.06"],["2","2022-03-01 12:01:19.406"],["3","2021-03-01 12:01:19.406"]]
 df3=spark.createDataFrame(data,["id","input"])
-
 df3.select(col("input"), 
     hour(col("input")).alias("hour"), 
     minute(col("input")).alias("minute"),
