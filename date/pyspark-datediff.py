@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
 
 # Create SparkSession
 spark = SparkSession.builder \
@@ -7,8 +8,6 @@ spark = SparkSession.builder \
 data = [("1","2019-07-01"),("2","2019-06-24"),("3","2019-08-24")]
 
 df=spark.createDataFrame(data=data,schema=["id","date"])
-
-from pyspark.sql.functions import *
 
 df.select(
       col("date"),
@@ -31,5 +30,4 @@ df2.select(
     )
 
 #SQL
-
 spark.sql("select round(months_between('2019-07-01',current_date())/12,2) as years_diff").show()
