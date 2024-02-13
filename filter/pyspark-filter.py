@@ -25,7 +25,6 @@ arrayStructureSchema = StructType([
          StructField('gender', StringType(), True)
          ])
 
-
 df = spark.createDataFrame(data = arrayStructureData, schema = arrayStructureSchema)
 df.printSchema()
 df.show(truncate=False)
@@ -52,6 +51,7 @@ df.filter("gender  <> 'M'") \
 #IS IN
 li=["OH","CA","DE"]
 df.filter(df.state.isin(li)).show()
+
 #IS NOT IN
 df.filter(~df.state.isin(li)).show()
 
@@ -67,4 +67,3 @@ df.filter(df.name.lastname == "Williams") \
 df.filter(df.state.startswith("N")).show()
 df.filter(df.state.endswith("H")).show()
 df.filter(df.state.like("N%")).show()
-    
