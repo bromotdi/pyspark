@@ -1,13 +1,13 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
+
 # Create SparkSession
 spark = SparkSession.builder \
                .appName('SparkByExamples.com') \
                .getOrCreate()
-data=[["1","2020-02-01"],["2","2019-03-01"],["3","2021-03-01"]]
+data=[["1","2023-02-01"],["2","2021-03-01"],["3","2022-03-01"]]
 df=spark.createDataFrame(data,["id","input"])
 df.show()
-
-from pyspark.sql.functions import *
 
 #current_date()
 df.select(current_date().alias("current_date")
@@ -41,15 +41,12 @@ df.select(col("input"),
    ).show()
 
 #add_months() , date_add(), date_sub()
-
 df.select(col("input"), 
     add_months(col("input"),3).alias("add_months"), 
     add_months(col("input"),-3).alias("sub_months"), 
     date_add(col("input"),4).alias("date_add"), 
     date_sub(col("input"),4).alias("date_sub") 
   ).show()
-
-#
 
 df.select(col("input"), 
      year(col("input")).alias("year"), 
@@ -64,7 +61,7 @@ df.select(col("input"),
      dayofyear(col("input")).alias("dayofyear"), 
   ).show()
 
-data=[["1","02-01-2020 11 01 19 06"],["2","03-01-2019 12 01 19 406"],["3","03-01-2021 12 01 19 406"]]
+data=[["1","02-01-2020 11 01 19 06"],["2","03-01-2021 12 01 19 406"],["3","03-01-2022 12 01 19 406"]]
 df2=spark.createDataFrame(data,["id","input"])
 df2.show(truncate=False)
 
@@ -77,9 +74,8 @@ df2.select(col("input"),
     to_timestamp(col("input"), "MM-dd-yyyy HH mm ss SSS").alias("to_timestamp") 
   ).show(truncate=False)
 
-
-#hour, minute,second
-data=[["1","2020-02-01 11:01:19.06"],["2","2019-03-01 12:01:19.406"],["3","2021-03-01 12:01:19.406"]]
+#hour, minute, second
+data=[["1","2021-02-01 11:01:19.06"],["2","2022-03-01 12:01:19.406"],["3","2023-03-01 12:01:19.406"]]
 df3=spark.createDataFrame(data,["id","input"])
 
 df3.select(col("input"), 
@@ -87,6 +83,3 @@ df3.select(col("input"),
     minute(col("input")).alias("minute"),
     second(col("input")).alias("second") 
   ).show(truncate=False)
-
-
-
