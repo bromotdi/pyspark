@@ -1,4 +1,6 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import split, col
+
 spark = SparkSession.builder \
          .appName('SparkByExamples.com') \
          .getOrCreate()
@@ -15,7 +17,6 @@ df=spark.createDataFrame(data,columns)
 df.printSchema()
 df.show(truncate=False)
 
-from pyspark.sql.functions import split, col
 df2 = df.select(split(col("name"),",").alias("NameArray")) \
     .drop("name")
 df2.printSchema()
@@ -24,4 +25,3 @@ df2.show()
 df.createOrReplaceTempView("PERSON")
 spark.sql("select SPLIT(name,',') as NameArray from PERSON") \
     .show()
-    
