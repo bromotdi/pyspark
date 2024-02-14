@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
 
 # Create SparkSession
 spark = SparkSession.builder \
@@ -6,8 +7,6 @@ spark = SparkSession.builder \
                .getOrCreate()
 data=[["1"]]
 df=spark.createDataFrame(data,["id"])
-
-from pyspark.sql.functions import *
 
 #current_date() & current_timestamp()
 df.withColumn("current_date",current_date()) \
