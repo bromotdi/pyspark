@@ -1,5 +1,6 @@
 import pyspark
 from pyspark.sql import SparkSession
+
 spark = SparkSession.builder.appName('SparkByExamples.com') \
         .master("local[5]").getOrCreate()
 
