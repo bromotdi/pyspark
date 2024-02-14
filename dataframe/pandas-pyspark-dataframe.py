@@ -1,13 +1,12 @@
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 from pyspark.sql import SparkSession
-
 import pandas as pd    
+
 data = [['Scott', 50], ['Jeff', 45], ['Thomas', 54],['Ann',34]] 
   
 # Create the pandas DataFrame 
 pandasDF = pd.DataFrame(data, columns = ['Name', 'Age']) 
-  
-# print dataframe. 
+
 print(pandasDF)
 
 spark = SparkSession.builder \
