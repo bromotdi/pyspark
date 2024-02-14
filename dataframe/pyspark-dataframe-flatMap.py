@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
 columns = ["name","languagesAtSchool","currentState"]
@@ -9,6 +10,3 @@ data = [("James,,Smith",["Java","Scala","C++"],"CA"), \
 df = spark.createDataFrame(data=data,schema=columns)
 df.printSchema()
 df.show(truncate=False)
-
-#Flatmap    
-
