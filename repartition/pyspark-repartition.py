@@ -1,5 +1,6 @@
 import pyspark
 from pyspark.sql import SparkSession
+
 spark = SparkSession.builder.appName('SparkByExamples.com') \
         .master("local[5]").getOrCreate()
 
@@ -13,9 +14,6 @@ print("From local[5]"+str(rdd.getNumPartitions()))
 
 rdd1 = spark.sparkContext.parallelize((0,25), 6)
 print("parallelize : "+str(rdd1.getNumPartitions()))
-
-"""rddFromFile = spark.sparkContext.textFile("src/main/resources/test.txt",10)
-print("TextFile : "+str(rddFromFile.getNumPartitions())) """
 
 rdd1.saveAsTextFile("c://tmp/partition2")
 
