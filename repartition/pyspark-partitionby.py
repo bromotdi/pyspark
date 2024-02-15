@@ -8,7 +8,6 @@ spark = SparkSession.builder \
 df=spark.read.option("header",True) \
         .csv("C:/apps/sparkbyexamples/src/pyspark-examples/resources/simple-zipcodes.csv")
 
-          
 df.show()
 print(df.rdd.getNumPartitions())
 
@@ -52,4 +51,3 @@ df.write.option("header",True) \
         .partitionBy("state") \
         .mode("overwrite") \
         .csv("/tmp/zipcodes-state-maxrecords")
-
