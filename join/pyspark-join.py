@@ -18,12 +18,12 @@ empDF = spark.createDataFrame(data=emp, schema = empColumns)
 empDF.printSchema()
 empDF.show(truncate=False)
 
-
 dept = [("Finance",10), \
     ("Marketing",20), \
     ("Sales",30), \
     ("IT",40) \
   ]
+
 deptColumns = ["dept_name","dept_id"]
 deptDF = spark.createDataFrame(data=dept, schema = deptColumns)
 deptDF.printSchema()
@@ -70,6 +70,3 @@ joinDF = spark.sql("select * from EMP e, DEPT d where e.emp_dept_id == d.dept_id
 
 joinDF2 = spark.sql("select * from EMP e INNER JOIN DEPT d ON e.emp_dept_id == d.dept_id") \
   .show(truncate=False)
-  
-
-   
