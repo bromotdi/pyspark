@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 data = [('James','Smith','M',3000),
   ('Anna','Rose','F',4100),
@@ -26,7 +27,3 @@ def reformat2(partitionData):
 
 df2=df.rdd.mapPartitions(reformat2).toDF("name","bonus")
 df2.show()
-
-
-
-
