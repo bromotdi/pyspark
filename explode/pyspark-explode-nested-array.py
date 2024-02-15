@@ -2,7 +2,6 @@ import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import explode, flatten
 
-
 spark = SparkSession.builder.appName('pyspark-by-examples').getOrCreate()
 
 arrayArrayData = [
@@ -15,10 +14,7 @@ df = spark.createDataFrame(data=arrayArrayData, schema = ['name','subjects'])
 df.printSchema()
 df.show(truncate=False)
 
-""" """
 df.select(df.name,explode(df.subjects)).show(truncate=False)
 
 """ creates a single array from an array of arrays. """
 df.select(df.name,flatten(df.subjects)).show(truncate=False)
-
-"""END"""
