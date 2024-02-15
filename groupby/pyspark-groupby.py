@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jun 14 10:20:19 2020
-
-@author: prabha
-"""
-
 import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col,sum,avg,max
@@ -31,7 +24,6 @@ df.groupBy("department").sum("salary").show(truncate=False)
 
 df.groupBy("department").count().show(truncate=False)
 
-
 df.groupBy("department","state") \
     .sum("salary","bonus") \
    .show(truncate=False)
@@ -43,7 +35,6 @@ df.groupBy("department") \
          max("bonus").alias("max_bonus") \
      ) \
     .show(truncate=False)
-    
 df.groupBy("department") \
     .agg(sum("salary").alias("sum_salary"), \
       avg("salary").alias("avg_salary"), \
