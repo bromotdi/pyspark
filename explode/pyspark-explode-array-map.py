@@ -1,6 +1,9 @@
 import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import explode
+from pyspark.sql.functions import explode_outer
+from pyspark.sql.functions import posexplode
+from pyspark.sql.functions import posexplode_outer
 
 spark = SparkSession.builder.appName('pyspark-by-examples').getOrCreate()
 
@@ -25,11 +28,13 @@ df3.show()
 
 """ with array """
 df.select(df.name,explode_outer(df.knownLanguages)).show()
+
 """ with map """
 df.select(df.name,explode_outer(df.properties)).show()
 
 """ with array """
 df.select(df.name,posexplode(df.knownLanguages)).show()
+
 """ with map """
 df.select(df.name,posexplode(df.properties)).show()
 
@@ -38,6 +43,3 @@ df.select(df.name,posexplode_outer(df.knownLanguages)).show()
 
 """ with map """
 df.select(df.name,posexplode_outer(df.properties)).show()
-
-
-"""END"""
