@@ -1,10 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-author SparkByExamples.com
-"""
-
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col,sum,avg,max
+from pyspark.sql.functions import asc
+from pyspark.sql.functions import desc
 
 spark = SparkSession.builder \
                     .appName('SparkByExamples.com') \
@@ -36,10 +33,8 @@ dfGroup.show(truncate=False)
 dfFilter=dfGroup.filter(dfGroup.sum_salary > 100000)
 dfFilter.show()
 
-from pyspark.sql.functions import asc
 dfFilter.sort("sum_salary").show()
 
-from pyspark.sql.functions import desc
 dfFilter.sort(desc("sum_salary")).show()
 
 df.groupBy("state") \
@@ -62,8 +57,3 @@ df.groupBy("state") \
   .sum("salary") \
   .select(col("state"),col("sum(salary)").alias("sum_salary")) \
   .show()
-  
-
-
-
-
