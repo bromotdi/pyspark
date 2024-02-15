@@ -1,5 +1,6 @@
 import pyspark
 from pyspark.sql import SparkSession
+
 spark = SparkSession.builder.appName('machinelearninggeeks.com').getOrCreate()
   
 emp = [(1,"Smith",-1,"2018","10","M",3000), \
