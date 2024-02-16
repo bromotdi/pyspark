@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import *
 
-# Create SparkSession
 spark = SparkSession.builder \
           .appName('SparkByExamples.com') \
           .getOrCreate()
@@ -8,14 +8,16 @@ spark = SparkSession.builder \
 inputData = [("2023-07-01 12:01:19",
             "07-01-2023 12:01:19", 
             "07-01-2023")]
+
 columns=["timestamp_1","timestamp_2","timestamp_3"]
+
 df=spark.createDataFrame(
         data = inputData,
         schema = columns)
+
 df.printSchema()
 df.show(truncate=False)
 
-from pyspark.sql.functions import *
 df2 = df.select( 
       unix_timestamp(col("timestamp_1")).alias("timestamp_1"), 
       unix_timestamp(col("timestamp_2"),"MM-dd-yyyy HH:mm:ss").alias("timestamp_2"), 
@@ -34,5 +36,3 @@ df3=df2.select(
   )
 df3.printSchema()
 df3.show(truncate=False)
-
-#SQL
