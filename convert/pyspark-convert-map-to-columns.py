@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
 dataDictionary = [
@@ -28,7 +29,6 @@ df.withColumn("hair",df.properties["hair"]) \
   .withColumn("eye",df.properties["eye"]) \
   .drop("properties") \
   .show()
-
 # Functions
 from pyspark.sql.functions import explode,map_keys,col
 keysDF = df.select(explode(map_keys(df.properties))).distinct()
