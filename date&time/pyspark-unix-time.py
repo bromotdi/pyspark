@@ -5,9 +5,9 @@ spark = SparkSession.builder \
           .appName('SparkByExamples.com') \
           .getOrCreate()
 
-inputData = [("2019-07-01 12:01:19",
-            "07-01-2019 12:01:19", 
-            "07-01-2019")]
+inputData = [("2023-07-01 12:01:19",
+            "07-01-2023 12:01:19", 
+            "07-01-2023")]
 columns=["timestamp_1","timestamp_2","timestamp_3"]
 df=spark.createDataFrame(
         data = inputData,
@@ -22,6 +22,7 @@ df2 = df.select(
       unix_timestamp(col("timestamp_3"),"MM-dd-yyyy").alias("timestamp_3"), 
       unix_timestamp().alias("timestamp_4") 
    )
+
 df2.printSchema()
 df2.show(truncate=False)
 
