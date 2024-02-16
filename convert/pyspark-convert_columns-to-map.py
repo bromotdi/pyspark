@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType,StructField, StringType, IntegerType
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 data = [ ("36636","Finance",3000,"USA"), 
@@ -7,6 +7,7 @@ data = [ ("36636","Finance",3000,"USA"),
     ("42114","Sales",3900,"USA"), 
     ("39192","Marketing",2500,"CAN"), 
     ("34534","Sales",6500,"USA") ]
+
 schema = StructType([
      StructField('id', StringType(), True),
      StructField('dept', StringType(), True),
