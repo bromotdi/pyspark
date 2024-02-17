@@ -9,6 +9,7 @@ schema = StructType([
   StructField('middlename', StringType(), True),
   StructField('lastname', StringType(), True)
   ])
+
 df = spark.createDataFrame(spark.sparkContext.emptyRDD(),schema)
 df.printSchema()
 
@@ -20,8 +21,3 @@ df2.printSchema()
 
 df3 = spark.emptyDataFrame()
 df3.printSchema()
-
-
-
-
-
