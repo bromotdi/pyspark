@@ -1,4 +1,10 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.types import StructField, StructType, StringType, MapType
+from pyspark.sql.functions import explode
+from pyspark.sql.functions import map_keys
+from pyspark.sql.functions import map_values
+from pyspark.sql.functions import explode,map_keys
+
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
 dataDictionary = [
@@ -10,7 +16,6 @@ dataDictionary = [
         ]
 
 # Using StructType schema
-from pyspark.sql.types import StructField, StructType, StringType, MapType
 schema = StructType([
     StructField('name', StringType(), True),
     StructField('properties', MapType(StringType(),StringType()),True)
@@ -35,17 +40,12 @@ df.withColumn("hair",df.properties["hair"]) \
   .drop("properties") \
   .show()
 
-from pyspark.sql.functions import explode
 df.select(df.name,explode(df.properties)).show()
 
-from pyspark.sql.functions import map_keys
 df.select(df.name,map_keys(df.properties)).show()
 
-from pyspark.sql.functions import map_values
 df.select(df.name,map_values(df.properties)).show()
 
-#from pyspark.sql.functions import explode,map_keys
-#keysDF = df.select(explode(map_keys(df.properties))).distinct()
-#keysList = keysDF.rdd.map(lambda x:x[0]).collect()
-#print(keysList)
-
+keysDF = df.select(explode(map_keys(df.properties))).distinct()
+keysList = keysDF.rdd.map(lambda x:x[0]).collect()
+print(keysList)
