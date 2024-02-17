@@ -1,7 +1,7 @@
 import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, lit
-from pyspark.sql.types import StructType, StructField, StringType,IntegerType
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
@@ -59,13 +59,10 @@ schemaStruct = StructType([
          StructField('salary', StringType(), True)
          ])
 
-
 df7 = spark.createDataFrame(data=dataStruct, schema = schemaStruct)
 df7.printSchema()
 df7.show(truncate=False)
 
-
-"""
 columns = ["name","address"]
 data = [("Robert, Smith", "1 Main st, Newark, NJ, 92537"), \
         ("Maria, Garcia","3456 Walnut st, Newark, NJ, 94732")]
@@ -81,4 +78,3 @@ finalDF = newDF.toDF("First Name","Last Name",
              "Address Line1","City","State","zipCode")
 finalDF.printSchema()
 finalDF.show(false)
-"""
