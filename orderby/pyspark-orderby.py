@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Jun 20 07:45:04 2020
-
-@author: NNK
-"""
-
 import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, asc,desc
