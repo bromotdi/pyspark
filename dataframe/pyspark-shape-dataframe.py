@@ -1,4 +1,6 @@
+import pyspark
 from pyspark.sql import SparkSession
+import pandas as pd   
 
 spark = SparkSession.builder \
     .master("local[1]") \
@@ -13,10 +15,9 @@ print((sparkDF.count(), len(sparkDF.columns)))
 
 def sparkShape(dataFrame):
     return (dataFrame.count(), len(dataFrame.columns))
-import pyspark
+
 pyspark.sql.dataframe.DataFrame.shape = sparkShape
 print(sparkDF.shape())
 
-import pandas as pd    
 pandasDF=sparkDF.toPandas()
 print(pandasDF.shape)
