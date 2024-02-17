@@ -23,6 +23,3 @@ df.show(truncate=False)
 
 dfSort=df.sort(df.state,df.salary).groupBy(df.state).agg(sum(df.salary))
 dfSort.show()
-
-
-
