@@ -14,6 +14,7 @@ simpleData = [("James","Sales","NY",90000,34,10000), \
     ("Jeff","Marketing","CA",80000,25,18000), \
     ("Kumar","Marketing","NY",91000,50,21000) \
   ]
+
 columns= ["employee_name","department","state","salary","age","bonus"]
 
 df = spark.createDataFrame(data = simpleData, schema = columns)
@@ -35,11 +36,7 @@ df.sort(df.department.asc(),df.state.desc()).show(truncate=False)
 df.sort(col("department").asc(),col("state").desc()).show(truncate=False)
 df.orderBy(col("department").asc(),col("state").desc()).show(truncate=False)
 
-
 df.createOrReplaceTempView("EMP")
 df.select("employee_name",asc("department"),desc("state"),"salary","age","bonus").show(truncate=False)
 
 spark.sql("select employee_name,department,state,salary,age,bonus from EMP ORDER BY department asc").show(truncate=False)
-
-
-
