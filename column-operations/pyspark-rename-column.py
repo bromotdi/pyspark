@@ -1,11 +1,9 @@
 import pyspark
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType,StructField, StringType, IntegerType
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType
 from pyspark.sql.functions import *
 
-
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
-
 
 dataDF = [(('James','','Smith'),'1991-04-01','M',3000),
   (('Michael','Rose',''),'2000-05-19','M',4000),
@@ -30,6 +28,7 @@ df.printSchema()
 
 ''' Example 1 '''
 df.withColumnRenamed("dob","DateOfBirth").printSchema()
+
 ''' Example 2 '''    
 df2 = df.withColumnRenamed("dob","DateOfBirth") \
     .withColumnRenamed("salary","salary_amount")
@@ -61,18 +60,13 @@ df4 = df.withColumn("fname",col("name.firstname")) \
       .drop("name")
 df4.printSchema()
 
-''' Example 6
-
-not working
+''' Example 6'''
 val old_columns = Seq("dob","gender","salary","fname","mname","lname")
     val new_columns = Seq("DateOfBirth","Sex","salary","firstName","middleName","lastName")
     val columnsList = old_columns.zip(new_columns).map(f=&gt;{col(f._1).as(f._2)})
     val df5 = df4.select(columnsList:_*)
     df5.printSchema()
-'''
-''' Example 7
-not working 
+
+''' Example 7'''
 newColumns = ["newCol1","newCol2","newCol3","newCol4"]
-df.toDF(newColumns) \
-.printSchema()
-'''        
+df.toDF(newColumns).printSchema()
