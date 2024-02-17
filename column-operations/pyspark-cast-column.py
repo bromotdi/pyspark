@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Jun 13 21:08:30 2020
-
-@author: NNK
-"""
-
 import pyspark
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import col
+from pyspark.sql.types import StringType, BooleanType, DateType
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
@@ -20,8 +15,6 @@ df = spark.createDataFrame(data = simpleData, schema = columns)
 df.printSchema()
 df.show(truncate=False)
 
-from pyspark.sql.functions import col
-from pyspark.sql.types import StringType,BooleanType,DateType
 df2 = df.withColumn("age",col("age").cast(StringType())) \
     .withColumn("isGraduated",col("isGraduated").cast(BooleanType())) \
     .withColumn("jobStartDate",col("jobStartDate").cast(DateType()))
