@@ -1,7 +1,6 @@
 import pyspark
 from pyspark.sql import SparkSession
 
-
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
 states = {"NY":"New York", "CA":"California", "FL":"Florida"}
@@ -25,6 +24,4 @@ result = df.rdd.map(lambda x: (x[0],x[1],x[2],state_convert(x[3]))).toDF(columns
 result.show(truncate=False)
 
 # Broadcast variable on filter
-
 filteDf= df.where((df['state'].isin(broadcastStates.value)))
-
