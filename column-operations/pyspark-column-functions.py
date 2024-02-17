@@ -1,5 +1,10 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import expr
+from pyspark.sql import Row
+from pyspark.sql.functions import lit
+from pyspark.sql.functions import when
+from pyspark.sql.types import StructType, StructField, StringType, ArrayType, MapType
+from pyspark.sql.functions import col
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
