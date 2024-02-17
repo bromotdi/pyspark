@@ -12,6 +12,7 @@ df.select(col("`name.fname`")).show()
 df.select(df["`name.fname`"]).show()
 df.withColumn("new_col",col("`name.fname`").substr(1,2)).show()
 df.filter(col("`name.fname`").startswith("J")).show()
+
 new_cols=(column.replace('.', '_') for column in df.columns)
 df2 = df.toDF(*new_cols)
 df2.show()
@@ -25,12 +26,14 @@ df.select(df["`name.fname`"]).show()
 
 #Using SQL col() function
 df.select(col("gender")).show()
+
 #Accessing column name with dot (with backticks)
 df.select(col("`name.fname`")).show()
 
 #Access struct column
 data=[Row(name="James",prop=Row(hair="black",eye="blue")),
       Row(name="Ann",prop=Row(hair="grey",eye="black"))]
+
 df=spark.createDataFrame(data)
 df.printSchema()
 
@@ -47,7 +50,6 @@ df.select(df.col1 - df.col2).show()
 df.select(df.col1 * df.col2).show()
 df.select(df.col1 / df.col2).show()
 df.select(df.col1 % df.col2).show()
-
 df.select(df.col2 > df.col3).show()
 df.select(df.col2 < df.col3).show()
 df.select(df.col2 == df.col3).show()
