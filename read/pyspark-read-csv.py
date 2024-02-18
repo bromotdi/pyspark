@@ -14,12 +14,9 @@ df2 = spark.read.option("header",True) \
      .csv("C:/apps/sparkbyexamples/src/pyspark-examples/resources/zipcodes.csv")
 df2.printSchema()
    
-
-
 df3 = spark.read.options(header='True', delimiter=',') \
   .csv("C:/apps/sparkbyexamples/src/pyspark-examples/resources/zipcodes.csv")
 df3.printSchema()
-
 
 schema = StructType() \
       .add("RecordNumber",IntegerType(),True) \
@@ -51,4 +48,3 @@ df_with_schema.printSchema()
 
 df2.write.option("header",True) \
  .csv("/tmp/spark_output/zipcodes123")
- 
