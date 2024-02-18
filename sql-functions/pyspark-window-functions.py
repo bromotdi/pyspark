@@ -9,7 +9,7 @@ from pyspark.sql.functions import ntile
 from pyspark.sql.functions import cume_dist    
 from pyspark.sql.functions import lag 
 from pyspark.sql.functions import lead  
-from pyspark.sql.functions import col,avg,sum,min,max,row_number 
+from pyspark.sql.functions import col, avg, sum, min, max, row_number 
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
