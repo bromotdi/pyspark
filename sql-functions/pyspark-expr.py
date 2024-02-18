@@ -1,7 +1,8 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import expr
+
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
-from pyspark.sql.functions import expr
 #Concatenate columns
 data=[("James","Bond"),("Scott","Varsa")] 
 df=spark.createDataFrame(data).toDF("col1","col2") 
@@ -34,6 +35,7 @@ df.select(df.date,df.increment,
 
 df.select("increment",expr("cast(increment as string) as str_increment")) \
   .printSchema()
+
 #Use expr()  to filter the rows
 data=[(100,2),(200,3000),(500,500)] 
 df=spark.createDataFrame(data).toDF("col1","col2") 
