@@ -28,7 +28,6 @@ df.select(col("Seqno"), \
     convertUDF(col("Name")).alias("Name") ) \
 .show(truncate=False)
 
-
 @udf(returnType=StringType()) 
 def upperCase(str):
     return str.upper()
@@ -49,7 +48,6 @@ spark.sql("select Seqno, convertUDF(Name) as Name from NAME_TABLE " + \
      .show(truncate=False)  
      
 """ null check """
-
 columns = ["Seqno","Name"]
 data = [("1", "john jones"),
     ("2", "tracey smith"),
@@ -67,9 +65,4 @@ spark.sql("select _nullsafeUDF(Name) from NAME_TABLE2") \
 
 spark.sql("select Seqno, _nullsafeUDF(Name) as Name from NAME_TABLE2 " + \
           " where Name is not null and _nullsafeUDF(Name) like '%John%'") \
-     .show(truncate=False)  
-
-
-
- 
-
+     .show(truncate=False)
