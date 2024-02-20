@@ -13,5 +13,3 @@ emptyRDD = spark.sparkContext.emptyRDD()
 emptyRDD2 = rdd=spark.sparkContext.parallelize([])
 
 print(""+str(emptyRDD2.isEmpty()))
-
-
