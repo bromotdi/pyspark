@@ -26,9 +26,6 @@ pivotDF = df.groupBy("Product","Country") \
 pivotDF.printSchema()
 pivotDF.show(truncate=False)
 
-
-""" unpivot """
-""" unpivot """
 unpivotExpr = "stack(3, 'Canada', Canada, 'China', China, 'Mexico', Mexico) as (Country,Total)"
 unPivotDF = pivotDF.select("Product", expr(unpivotExpr)) \
     .where("Total is not null")
