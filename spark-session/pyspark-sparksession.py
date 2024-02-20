@@ -1,5 +1,6 @@
 import pyspark
 from pyspark.sql import SparkSession
+
 spark = SparkSession.builder.master("local[1]") \
                     .appName('SparkByExamples.com') \
                     .getOrCreate()
@@ -16,7 +17,6 @@ sparkSession2 = SparkSession.builder \
 print("Second SparkContext:")
 print("APP Name :"+sparkSession2.sparkContext.appName);
 print("Master :"+sparkSession2.sparkContext.master);
-
 
 sparkSession3 = SparkSession.newSession
 
