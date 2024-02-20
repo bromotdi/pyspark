@@ -1,5 +1,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import DoubleType, IntegerType
+from pyspark.sql.functions import col, round, expr
+
 # Create SparkSession
 spark = SparkSession.builder \
           .appName('SparkByExamples.com') \
@@ -15,12 +17,11 @@ df = spark.createDataFrame(data = simpleData, schema = columns)
 df.printSchema()
 df.show(truncate=False)
 
-from pyspark.sql.functions import col,round,expr
 df.withColumn("salary",df.salary.cast('double')).printSchema()    
 df.withColumn("salary",df.salary.cast(DoublerType())).printSchema()    
 df.withColumn("salary",col("salary").cast('double')).printSchema()    
 
-#df.withColumn("salary",round(df.salary.cast(DoubleType()),2)).show(truncate=False).printSchema()    
+df.withColumn("salary",round(df.salary.cast(DoubleType()),2)).show(truncate=False).printSchema()    
 df.selectExpr("firstname","isGraduated","cast(salary as double) salary").printSchema()    
 
 df.createOrReplaceTempView("CastExample")
