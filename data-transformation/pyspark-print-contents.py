@@ -14,7 +14,7 @@ dataColl=rdd.collect()
 
 for row in dataColl:
     print(row[0] + "," +str(row[1]))
-"""
+
 deptColumns = ["dept_name","dept_id"]
 deptDF = spark.createDataFrame(data=dept, schema = deptColumns)
 deptDF.printSchema()
@@ -29,4 +29,3 @@ print(dataCollect2)
 
 for row in dataCollect:
     print(row['dept_name'] + "," +str(row['dept_id']))
-"""
