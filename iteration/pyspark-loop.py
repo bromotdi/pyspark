@@ -1,4 +1,7 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import concat_ws, col, lit
+import pandas as pd
+
 spark = SparkSession.builder \
                     .appName('SparkByExamples.com') \
                     .getOrCreate()
@@ -12,7 +15,6 @@ columns = ["firstname","lastname","gender","salary"]
 df = spark.createDataFrame(data=data, schema = columns)
 df.show()
 
-from pyspark.sql.functions import concat_ws,col,lit
 df.select(concat_ws(",",df.firstname,df.lastname).alias("name"), \
           df.gender,lit(df.salary*2).alias("new_salary")).show()
 
@@ -23,18 +25,15 @@ rdd=df.rdd.map(lambda x:
 df2=rdd.toDF(["name","gender","new_salary"]   )
 df2.show()
 
-
 #Referring Column Names
 rdd2=df.rdd.map(lambda x: 
     (x["firstname"]+","+x["lastname"],x["gender"],x["salary"]*2)
     ) 
 
-
 #Referring Column Names
 rdd2=df.rdd.map(lambda x: 
     (x.firstname+","+x.lastname,x.gender,x.salary*2)
     ) 
-
 
 def func1(x):
     firstName=x.firstname
@@ -60,12 +59,10 @@ for row in dataCollect:
     print(row['firstname'] + "," +row['lastname'])
     
 #Convert to Pandas and Iterate
-
 dataCollect=df.rdd.toLocalIterator()
 for row in dataCollect:
     print(row['firstname'] + "," +row['lastname'])
-
-import pandas as pd
+  
 pandasDF = df.toPandas()
 for index, row in pandasDF.iterrows():
     print(row['firstname'], row['gender'])
