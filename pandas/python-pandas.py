@@ -1,4 +1,5 @@
 import pandas as pd    
+
 data = [["James","","Smith",30,"M",60000], 
         ["Michael","Rose","",50,"M",70000], 
         ["Robert","","Williams",42,"",400000], 
@@ -9,11 +10,10 @@ columns = ['First Name', 'Middle Name','Last Name','Age','Gender','Salary']
 # Create the pandas DataFrame 
 pandasDF = pd.DataFrame(data=data, columns=columns) 
   
-# print dataframe. 
+# print dataframe
 print(pandasDF)
 
 #Outputs below data on console
-
 pdCount=pandasDF.count()
 print(pdCount)
 
