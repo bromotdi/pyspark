@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-author SparkByExamples.com
-"""
-
 import pandas as pd    
 data = [["James","","Smith",30,"M",60000], 
         ["Michael","Rose","",50,"M",70000], 
