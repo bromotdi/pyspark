@@ -1,4 +1,6 @@
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import countDistinct
+
 spark = SparkSession.builder \
          .appName('SparkByExamples.com') \
          .getOrCreate()
@@ -14,13 +16,13 @@ data = [("James", "Sales", 3000),
     ("Kumar", "Marketing", 2000),
     ("Saif", "Sales", 4100)
   ]
+
 columns = ["Name","Dept","Salary"]
 df = spark.createDataFrame(data=data,schema=columns)
 df.distinct().show()
 print("Distinct Count: " + str(df.distinct().count()))
 
 # Using countDistrinct()
-from pyspark.sql.functions import countDistinct
 df2=df.select(countDistinct("Dept","Salary"))
 df2.show()
 
