@@ -1,8 +1,8 @@
 from pyspark.sql import SparkSession, Row
 
-
 row=Row("James",40)
 print(row[0] +","+str(row[1]))
+
 row2=Row(name="Alice", age=11)
 print(row2.name)
 
