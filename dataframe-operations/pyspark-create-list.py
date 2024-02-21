@@ -39,6 +39,3 @@ deptDF2.show(truncate=False)
 
 # Convert list to RDD
 rdd = spark.sparkContext.parallelize(dept)
-
-
-
