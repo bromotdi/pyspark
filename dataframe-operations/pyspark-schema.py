@@ -15,7 +15,6 @@ dates = ["1991-02-25","1998-05-10", "1993/03/15", "1992/07/17"]
 cities = ['Caracas', 'Ccs', '   São Paulo   ', '~Madrid']
 population = [37800000, 19795791, 12341418, 6489162]
 
-        # Dataframe:
+# Dataframe:
 df = spark.createDataFrame(list(zip(cities, dates, population)), schema=schema)
-
 df.show(truncate=False)
