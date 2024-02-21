@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-author SparkByExamples.com
-"""
-
 from pyspark.sql import SparkSession
 from pyspark.sql.types import DoubleType, IntegerType
 # Create SparkSession
