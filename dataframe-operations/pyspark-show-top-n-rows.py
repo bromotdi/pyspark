@@ -11,10 +11,9 @@ simpleData = [("James",34),("Ann",34),
 columns = ["firstname","age",]
 df = spark.createDataFrame(data = simpleData, schema = columns)
 
-
 df.show()
 #Returns the first ``num`` rows as a :class:`list` of :class:`Row`.
-# Internally calls limit and collect
+#Internally calls limit and collect
 #Action, Return Array[T]
 print(df.take(2))
 
@@ -24,18 +23,14 @@ print(df.take(2))
 #Return Array[T]
 print(df.tail(2))
 
-
 """Returns the first ``n`` rows.
-
 .. note:: This method should only be used if the resulting array is expected
     to be small, as all the data is loaded into the driver's memory.
-
 :param n: int, default 1. Number of rows to return.
 :return: If n is greater than 1, return a list of :class:`Row`.
     If n is 1, return a single Row."""
 #Return Array[T]
 print(df.head(2))
-
 
 #Returns the first row, same as df.head(1)
 print(df.first())
@@ -47,4 +42,3 @@ print(df.collect())
 #Returns a new Dataset by taking the first n rows.
 pandasDF=df.limit(3).toPandas()
 print(pandasDF)
-
