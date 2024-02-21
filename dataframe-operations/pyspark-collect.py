@@ -15,7 +15,6 @@ deptDF.printSchema()
 deptDF.show(truncate=False)
 
 dataCollect = deptDF.collect()
-
 print(dataCollect)
 
 dataCollect2 = deptDF.select("dept_name").collect()
