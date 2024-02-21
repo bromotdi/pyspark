@@ -19,6 +19,7 @@ simpleData = [("James", "Sales", 3000),
     ("Kumar", "Marketing", 2000),
     ("Saif", "Sales", 4100)
   ]
+
 schema = ["employee_name", "department", "salary"]
   
 df = spark.createDataFrame(data=simpleData, schema = schema)
