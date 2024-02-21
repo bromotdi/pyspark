@@ -1,4 +1,5 @@
 from pyspark.sql import SparkSession
+
 spark = SparkSession.builder \
     .master("local[1]") \
     .appName("SparkByExamples.com") \
@@ -11,12 +12,10 @@ df = spark.read.options(header='true', inferSchema='true') \
 df.printSchema()
 df.show(truncate=False)
 
-
 df.fillna(value=0).show()
 df.fillna(value=0,subset=["population"]).show()
 df.na.fill(value=0).show()
 df.na.fill(value=0,subset=["population"]).show()
-
 
 df.fillna(value="").show()
 df.na.fill(value="").show()
