@@ -1,8 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-author SparkByExamples.com
-"""
-
 import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType,StructField, StringType, IntegerType,ArrayType,MapType
