@@ -1,6 +1,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
-from pyspark.sql.functions import col,lit,create_map
+from pyspark.sql.functions import col, lit, create_map
+
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
 data = [ ("36636","Finance",(3000,"USA")), 
