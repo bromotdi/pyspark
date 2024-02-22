@@ -34,6 +34,7 @@ structureData = [
     (("Maria","Anne","Jones"),"39192","F",5500),
     (("Jen","Mary","Brown"),"","F",-1)
   ]
+
 structureSchema = StructType([
         StructField('name', StructType([
              StructField('firstname', StringType(), True),
@@ -48,7 +49,6 @@ structureSchema = StructType([
 df2 = spark.createDataFrame(data=structureData,schema=structureSchema)
 df2.printSchema()
 df2.show(truncate=False)
-
 
 updatedDF = df2.withColumn("OtherInfo", 
     struct(col("id").alias("identifier"),
