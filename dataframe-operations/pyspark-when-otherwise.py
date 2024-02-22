@@ -1,5 +1,6 @@
 import pyspark
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import col, when
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
@@ -15,7 +16,7 @@ df.printSchema()
 df.show(truncate=False)
 
 # Using when otherwise
-from pyspark.sql.functions import col, when
+
 df2 = df.withColumn("new_gender", when(col("gender") == "M","Male")
                                  .when(col("gender") == "F","Female")
                                  .otherwise("Unknown"))
