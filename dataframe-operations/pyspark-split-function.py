@@ -1,6 +1,7 @@
 import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import split, col
+
 spark=SparkSession.builder.appName("sparkbyexamples").getOrCreate()
 
 data=data = [('James','','Smith','1991-04-01'),
@@ -32,12 +33,7 @@ split_col = pyspark.sql.functions.split(df['dob'], '-')
 df3 = df.select("firstname","middlename","lastname","dob", split_col.getItem(0).alias('year'),split_col.getItem(1).alias('month'),split_col.getItem(2).alias('day'))   
 df3.show(truncate=False)
 
-"""
-df4=spark.createDataFrame([("20-13-2012-monday",)], ['date',])
 
-df4.select(split(df4.date,'^([\d]+-[\d]+-[\d])').alias('date'),
-    regexp_replace(split(df4.date,'^([\d]+-[\d]+-[\d]+)').getItem(1),'-','').alias('day')).show()
-    """
 df4 = spark.createDataFrame([('oneAtwoBthree',)], ['str',])
 df4.select(split(df4.str, '[AB]').alias('str')).show()
 
