@@ -33,7 +33,6 @@ split_col = pyspark.sql.functions.split(df['dob'], '-')
 df3 = df.select("firstname","middlename","lastname","dob", split_col.getItem(0).alias('year'),split_col.getItem(1).alias('month'),split_col.getItem(2).alias('day'))   
 df3.show(truncate=False)
 
-
 df4 = spark.createDataFrame([('oneAtwoBthree',)], ['str',])
 df4.select(split(df4.str, '[AB]').alias('str')).show()
 
