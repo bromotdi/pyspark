@@ -62,10 +62,7 @@ updatedDF = df2.withColumn("OtherInfo",
 updatedDF.printSchema()
 updatedDF.show(truncate=False)
 
-
-""" Array & Map"""
-
-
+"""Array & Map"""
 arrayStructureSchema = StructType([
     StructField('name', StructType([
        StructField('firstname', StringType(), True),
@@ -75,4 +72,3 @@ arrayStructureSchema = StructType([
        StructField('hobbies', ArrayType(StringType()), True),
        StructField('properties', MapType(StringType(),StringType()), True)
     ])
-
