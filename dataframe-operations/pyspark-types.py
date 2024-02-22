@@ -4,12 +4,10 @@ from pyspark.sql.types import StructType, StructField, StringType, ArrayType, In
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
-
 arrayType = ArrayType(IntegerType(),False)
 print(arrayType.jsonValue()) 
 print(arrayType.simpleString())
 print(arrayType.typeName()) 
-
 
 mapType = MapType(StringType(),IntegerType())
  
@@ -33,16 +31,6 @@ schema = StructType([
     StructField("salary", IntegerType(), True) 
   ])
 
-
 df = spark.createDataFrame(data=data,schema=schema)
 df.printSchema()
 df.show(truncate=False)
-
-
-
-
-
-
-
-
-
