@@ -19,13 +19,10 @@ df.na.fill(value=0,subset=["population"]).show()
 df.fillna(value="").show()
 df.na.fill(value="").show()
 
-df.fillna("unknown",["city"]) \
-    .fillna("",["type"]).show()
+df.fillna("unknown",["city"]).fillna("",["type"]).show()
 
 df.fillna({"city": "unknown", "type": ""}).show()
 
-df.na.fill("unknown",["city"]) \
-    .na.fill("",["type"]).show()
+df.na.fill("unknown",["city"]).na.fill("",["type"]).show()
 
-df.na.fill({"city": "unknown", "type": ""}) \
-    .show()
+df.na.fill({"city": "unknown", "type": ""}).show()
