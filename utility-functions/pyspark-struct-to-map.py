@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType,StructField, StringType, IntegerType
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType
+
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 data = [ ("36636","Finance",(3000,"USA")), 
     ("40288","Finance",(5000,"IND")), 
