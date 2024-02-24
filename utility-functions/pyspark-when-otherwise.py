@@ -11,7 +11,7 @@ data = [("James","","Smith","36636","M",60000),
         ("Maria","Anne","Jones","39192","F",500000),
         ("Jen","Mary","Brown","","F",0)]
 
-columns = ["first_name","middle_name","last_name","dob","gender","salary"]
+columns = ["first_name", "middle_name", "last_name", "dob", "gender", "salary"]
 
 df = spark.createDataFrame(data = data, schema = columns)
 df.printSchema()
