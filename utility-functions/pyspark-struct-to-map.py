@@ -1,6 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType
-from pyspark.sql.functions import col,lit,create_map
+from pyspark.sql.functions import col, lit, create_map
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
@@ -28,5 +28,6 @@ df = df.withColumn("propertiesMap",create_map(
         lit("salary"),col("properties.salary"),
         lit("location"),col("properties.location")
         )).drop("properties")
+
 df.printSchema()
 df.show(truncate=False)
