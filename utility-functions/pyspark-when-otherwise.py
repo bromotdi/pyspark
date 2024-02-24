@@ -1,5 +1,7 @@
 import pyspark
 from pyspark.sql import SparkSession
+from pyspark.sql.functions import expr
+from pyspark.sql.functions import col, when
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
@@ -15,7 +17,7 @@ df.printSchema()
 df.show(truncate=False)
 
 # Using when otherwise
-from pyspark.sql.functions import col, when
+
 df2 = df.withColumn("new_gender", when(col("gender") == "M","Male")
                                  .when(col("gender") == "F","Female")
                                  .otherwise("Unknown"))
@@ -26,7 +28,7 @@ df22=df.select(col("*"), when(col("gender") == "M","Male")
       .otherwise("Unknown").alias("new_gender")).show(truncate=False)
 
 # Using case when
-from pyspark.sql.functions import expr
+
 df3 = df.withColumn("new_gender", expr("case when gender = 'M' then 'Male' " + 
                        "when gender = 'F' then 'Female' " +
                        "else 'Unknown' end"))
