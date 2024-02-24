@@ -1,6 +1,7 @@
 import pyspark
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import expr
+
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
 data = [("James", "Sales", 3000), \
@@ -14,6 +15,7 @@ data = [("James", "Sales", 3000), \
     ("Kumar", "Marketing", 2000), \
     ("Saif", "Sales", 4100) \
   ]
+
 columns= ["employee_name", "department", "salary"]
 df = spark.createDataFrame(data = data, schema = columns)
 df.printSchema()
