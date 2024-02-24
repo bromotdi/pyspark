@@ -21,8 +21,6 @@ print("sampleBy Examples")
 df2=df.select((df.id % 3).alias("key"))
 print(df2.sampleBy("key", {0: 0.1, 1: 0.2},0).collect())
 
-
-print("RDD Examples")
 '''RDD'''
 rdd = spark.sparkContext.range(0,100)
 print(rdd.sample(False,0.1,0).collect())
