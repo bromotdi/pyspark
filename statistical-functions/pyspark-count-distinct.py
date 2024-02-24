@@ -1,7 +1,6 @@
 from pyspark.sql import SparkSession
-spark = SparkSession.builder \
-         .appName('SparkByExamples.com') \
-         .getOrCreate()
+
+spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
 data = [("James", "Sales", 3000),
     ("Michael", "Sales", 4600),
