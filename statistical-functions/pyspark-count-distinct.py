@@ -21,7 +21,6 @@ df.distinct().show()
 print("Distinct Count: " + str(df.distinct().count()))
 
 # Using countDistrinct()
-
 df2=df.select(countDistinct("Dept","Salary"))
 df2.show()
 
