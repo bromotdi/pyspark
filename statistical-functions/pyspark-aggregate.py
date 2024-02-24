@@ -19,6 +19,7 @@ simpleData = [("James", "Sales", 3000),
     ("Kumar", "Marketing", 2000),
     ("Saif", "Sales", 4100)
   ]
+
 schema = ["employee_name", "department", "salary"]
   
 df = spark.createDataFrame(data=simpleData, schema = schema)
@@ -36,9 +37,9 @@ df.select(collect_set("salary")).show(truncate=False)
 
 df2 = df.select(countDistinct("department", "salary"))
 df2.show(truncate=False)
-print("Distinct Count of Department &amp; Salary: "+str(df2.collect()[0][0]))
-
+print("Distinct Count of Department &amp; Salary: " + str(df2.collect()[0][0]))
 print("count: "+str(df.select(count("salary")).collect()[0]))
+
 df.select(first("salary")).show(truncate=False)
 df.select(last("salary")).show(truncate=False)
 df.select(kurtosis("salary")).show(truncate=False)
@@ -46,9 +47,7 @@ df.select(max("salary")).show(truncate=False)
 df.select(min("salary")).show(truncate=False)
 df.select(mean("salary")).show(truncate=False)
 df.select(skewness("salary")).show(truncate=False)
-df.select(stddev("salary"), stddev_samp("salary"), \
-    stddev_pop("salary")).show(truncate=False)
+df.select(stddev("salary"), stddev_samp("salary"), stddev_pop("salary")).show(truncate=False)
 df.select(sum("salary")).show(truncate=False)
 df.select(sumDistinct("salary")).show(truncate=False)
-df.select(variance("salary"),var_samp("salary"),var_pop("salary")) \
-  .show(truncate=False)
+df.select(variance("salary"),var_samp("salary"),var_pop("salary")).show(truncate=False)
