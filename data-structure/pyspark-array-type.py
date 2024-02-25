@@ -1,5 +1,10 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType, ArrayType, StructType, StructField
+from pyspark.sql.functions import explode
+from pyspark.sql.functions import split
+from pyspark.sql.functions import array
+from pyspark.sql.functions import array_contains
+
 spark = SparkSession.builder \
                     .appName('SparkByExamples.com') \
                     .getOrCreate()
@@ -24,15 +29,14 @@ df = spark.createDataFrame(data=data,schema=schema)
 df.printSchema()
 df.show()
 
-from pyspark.sql.functions import explode
+
 df.select(df.name,explode(df.languagesAtSchool)).show()
 
-from pyspark.sql.functions import split
+
 df.select(split(df.name,",").alias("nameAsArray")).show()
 
-from pyspark.sql.functions import array
 df.select(df.name,array(df.currentState,df.previousState).alias("States")).show()
 
-from pyspark.sql.functions import array_contains
+
 df.select(df.name,array_contains(df.languagesAtSchool,"Java")
     .alias("array_contains")).show()
