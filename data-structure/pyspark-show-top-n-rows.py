@@ -13,8 +13,9 @@ df = spark.createDataFrame(data = simpleData, schema = columns)
 
 
 df.show()
+
 #Returns the first ``num`` rows as a :class:`list` of :class:`Row`.
-# Internally calls limit and collect
+#Internally calls limit and collect
 #Action, Return Array[T]
 print(df.take(2))
 
@@ -23,7 +24,6 @@ print(df.take(2))
 #a very large ``num`` can crash the driver process with OutOfMemoryError.
 #Return Array[T]
 print(df.tail(2))
-
 
 """Returns the first ``n`` rows.
 
@@ -43,8 +43,8 @@ print(df.first())
 #Returns all the records as a list of :class:`Row`.
 #Action, Return Array[T]
 print(df.collect())
+
 #"Limits the result count to the number specified.
 #Returns a new Dataset by taking the first n rows.
 pandasDF=df.limit(3).toPandas()
 print(pandasDF)
-
