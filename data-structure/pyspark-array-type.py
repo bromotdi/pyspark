@@ -29,14 +29,8 @@ df = spark.createDataFrame(data=data,schema=schema)
 df.printSchema()
 df.show()
 
-
 df.select(df.name,explode(df.languagesAtSchool)).show()
-
-
 df.select(split(df.name,",").alias("nameAsArray")).show()
-
 df.select(df.name,array(df.currentState,df.previousState).alias("States")).show()
-
-
 df.select(df.name,array_contains(df.languagesAtSchool,"Java")
     .alias("array_contains")).show()
