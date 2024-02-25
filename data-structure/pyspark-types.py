@@ -9,7 +9,6 @@ print(arrayType.jsonValue())
 print(arrayType.simpleString())
 print(arrayType.typeName()) 
 
-
 mapType = MapType(StringType(),IntegerType())
  
 print(mapType.keyType)
@@ -32,16 +31,6 @@ schema = StructType([
     StructField("salary", IntegerType(), True) 
   ])
 
-
 df = spark.createDataFrame(data=data,schema=schema)
 df.printSchema()
 df.show(truncate=False)
-
-
-
-
-
-
-
-
-
