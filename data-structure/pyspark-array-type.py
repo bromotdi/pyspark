@@ -1,9 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType, ArrayType, StructType, StructField
-from pyspark.sql.functions import explode
-from pyspark.sql.functions import split
-from pyspark.sql.functions import array
-from pyspark.sql.functions import array_contains
+from pyspark.sql.functions import explode, split, array, array_contains
 
 spark = SparkSession.builder \
                     .appName('SparkByExamples.com') \
