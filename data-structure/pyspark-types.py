@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jun 14 10:20:19 2020
-"""
-
-
 from pyspark.sql import SparkSession
 from pyspark.sql.types import DataType
 from pyspark.sql.types import StructType, StructField, StringType, ArrayType, IntegerType
