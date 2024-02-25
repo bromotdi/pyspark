@@ -31,14 +31,17 @@ Person=Row("name","lang","state")
 data = [Person("James,,Smith",["Java","Scala","C++"],"CA"), 
     Person("Michael,Rose,",["Spark","Java","C++"],"NJ"),
     Person("Robert,,Williams",["CSharp","VB"],"NV")]
+
 rdd=spark.sparkContext.parallelize(data)
 collData=rdd.collect()
 print(collData)
+
 for person in collData:
     print(person.name + "," +str(person.lang))
 
 #DataFrame Example 1
 columns = ["name","languagesAtSchool","currentState"]
+
 df=spark.createDataFrame(data)
 df.printSchema()
 df.show()
@@ -53,7 +56,9 @@ data = [("James,,Smith",["Java","Scala","C++"],"CA"),
 ("Michael,Rose,",["Spark","Java","C++"],"NJ"),
 ("Robert,,Williams",["CSharp","VB"],"NV")]
 columns = ["name","languagesAtSchool","currentState"]
+
 df=spark.createDataFrame(data).toDF(*columns)
 df.printSchema()
+
 for row in df.collect():
     print(row.name)
