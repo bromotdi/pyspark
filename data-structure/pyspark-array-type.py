@@ -9,9 +9,9 @@ spark = SparkSession.builder \
 arrayCol = ArrayType(StringType(),False)
 
 data = [
- ("James,,Smith",["Java","Scala","C++"],["Spark","Java"],"OH","CA"),
+ ("James, Smith",["Java","Scala","C++"],["Spark","Java"],"OH","CA"),
  ("Michael,Rose,",["Spark","Java","C++"],["Spark","Java"],"NY","NJ"),
- ("Robert,,Williams",["CSharp","VB"],["Spark","Python"],"UT","NV")
+ ("Robert, Williams",["CSharp","VB"],["Spark","Python"],"UT","NV")
 ]
 
 schema = StructType([ 
