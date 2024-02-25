@@ -1,8 +1,8 @@
 from pyspark.sql import SparkSession, Row
 
-
 row=Row("James",40)
 print(row[0] +","+str(row[1]))
+
 row2=Row(name="Alice", age=11)
 print(row2.name)
 
@@ -11,7 +11,6 @@ p1=Person("James", 40)
 p2=Person("Alice", 35)
 print(p1.name +","+p2.name)
 
-#PySpark Example
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
 rdd2 = spark.sparkContext.parallelize([],10)
