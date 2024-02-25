@@ -1,17 +1,15 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import DataType
-from pyspark.sql.types import StructType, StructField, StringType, ArrayType, IntegerType
+from pyspark.sql.types import StructType, MapType, StructField, StringType, ArrayType, IntegerType
 
 spark = SparkSession.builder.appName('SparkByExamples.com').getOrCreate()
 
-from pyspark.sql.types import ArrayType,IntegerType
 arrayType = ArrayType(IntegerType(),False)
 print(arrayType.jsonValue()) 
 print(arrayType.simpleString())
 print(arrayType.typeName()) 
 
 
-from pyspark.sql.types import MapType,StringType,IntegerType
 mapType = MapType(StringType(),IntegerType())
  
 print(mapType.keyType)
