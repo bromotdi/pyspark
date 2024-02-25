@@ -1,7 +1,7 @@
 import pyspark
 from pyspark.sql import SparkSession
-from pyspark.sql.types import StructType,StructField, StringType, IntegerType,ArrayType,MapType
-from pyspark.sql.functions import col,struct,when
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, ArrayType, MapType
+from pyspark.sql.functions import col, struct, when
 
 spark = SparkSession.builder.master("local[1]") \
                     .appName('SparkByExamples.com') \
@@ -33,7 +33,8 @@ structureData = [
     (("Robert","","Williams"),"42114","M",1400),
     (("Maria","Anne","Jones"),"39192","F",5500),
     (("Jen","Mary","Brown"),"","F",-1)
-  ]
+]
+
 structureSchema = StructType([
         StructField('name', StructType([
              StructField('firstname', StringType(), True),
@@ -49,7 +50,6 @@ df2 = spark.createDataFrame(data=structureData,schema=structureSchema)
 df2.printSchema()
 df2.show(truncate=False)
 
-
 updatedDF = df2.withColumn("OtherInfo", 
     struct(col("id").alias("identifier"),
     col("gender").alias("gender"),
@@ -62,10 +62,7 @@ updatedDF = df2.withColumn("OtherInfo",
 updatedDF.printSchema()
 updatedDF.show(truncate=False)
 
-
-""" Array & Map"""
-
-
+"""Array & Map"""
 arrayStructureSchema = StructType([
     StructField('name', StructType([
        StructField('firstname', StringType(), True),
@@ -75,4 +72,3 @@ arrayStructureSchema = StructType([
        StructField('hobbies', ArrayType(StringType()), True),
        StructField('properties', MapType(StringType(),StringType()), True)
     ])
-
