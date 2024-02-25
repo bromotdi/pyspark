@@ -12,6 +12,7 @@ print(df.sample(0.06).collect())
 print(df.sample(0.1,123).collect())
 print(df.sample(0.1,123).collect())
 print(df.sample(0.1,456).collect())
+
 print("withReplacement Examples")
 print(df.sample(True,0.3,123).collect())
 print(df.sample(0.3,123).collect())
