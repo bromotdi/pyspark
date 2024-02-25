@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType, ArrayType, StructType, StructField
+from pyspark.sql.functions import explode, split, array, array_contains
 
 spark = SparkSession.builder \
                     .appName('SparkByExamples.com') \
@@ -25,7 +26,6 @@ df = spark.createDataFrame(data=data,schema=schema)
 df.printSchema()
 df.show()
 
-from pyspark.sql.functions import explode, split, array, array_contains
 df.select(df.name,explode(df.languagesAtSchool)).show()
 df.select(split(df.name,",").alias("nameAsArray")).show()
 df.select(df.name,array(df.currentState,df.previousState).alias("States")).show()
